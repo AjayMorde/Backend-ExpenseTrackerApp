@@ -48,9 +48,7 @@ app.use('/password', forgotPassword);
 app.use('/report',report);
 
 
-app.use((req,res,next)=>{
-    res.sendFile(path.join(__dirname, `FrontEnd/${req.url}`))
-  })
+
 
 Users.hasMany(Expense);
 Expense.belongsTo(Users);
