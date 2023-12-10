@@ -31,10 +31,13 @@ const report= require('./routes/reports');
 
 
 
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname+ 'views')));  
-app.use(bodyparser.json({extended:false}));
 app.use(cors());
+app.use(bodyparser.json({ extended: false }));
 
+app.use(express.static('FrontEnd'))
 
 app.use('/add-user', addUser);
 app.use('/user-login', userLogin);
@@ -47,10 +50,9 @@ app.use('/premiumuser', premiumFeatures);
 app.use('/password', forgotPassword);
 app.use('/report',report);
 
-app.use((req,res,next)=>{
-    res.sendFile(path.join(__dirname, `FrontEnd/${req.url}`))
-  })
-
+app.use('/',(req,res,next)=>{
+    res.sendFile('sign-up.html',{root:'FrontEnd/sign-up'}) 
+})
 
 
 
