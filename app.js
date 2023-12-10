@@ -15,7 +15,7 @@ const Download=require('./models/download');
 
 
 
-const mainPageRouter = require('./routes/mainpage');
+// const mainPageRouter = require('./routes/mainpage');
 const addUser = require('./routes/add-user');
 const userName=require('./routes/getUsername');
 const userLogin = require('./routes/user-login');
@@ -37,7 +37,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.static('public'));
 
 
-app.use(mainPageRouter)
+// app.use(mainPageRouter)
 app.use('/add-user', addUser);
 app.use('/user-login', userLogin);
 app.use('/getUser', userName); 
@@ -50,7 +50,9 @@ app.use('/password', forgotPassword);
 app.use('/report',report);
 
 
-
+app.use('/', (request, response, next) => {
+    response.sendFile('sign-up.html', { root: 'views' });
+})
 
 Users.hasMany(Expense);
 Expense.belongsTo(Users);
