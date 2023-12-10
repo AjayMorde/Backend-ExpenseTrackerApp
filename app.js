@@ -30,10 +30,10 @@ const report= require('./routes/reports');
 
 
 
-app.use(express.static(path.join(__dirname+ 'views')));  
-app.use(cors());
-app.use(bodyparser.json({ extended: false }));
 
+app.use(express.static(path.join(__dirname+ 'views')));  
+app.use(bodyParser.json({extended:false}));
+app.use(cors());
 
 
 app.use('/add-user', addUser);
@@ -46,6 +46,10 @@ app.use('/purchase', purchase);
 app.use('/premiumuser', premiumFeatures);
 app.use('/password', forgotPassword);
 app.use('/report',report);
+
+app.use((req,res,next)=>{
+    res.sendFile(path.join(__dirname, `FrontEnd/${req.url}`))
+  })
 
 
 
