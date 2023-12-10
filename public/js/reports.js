@@ -12,7 +12,7 @@ async function showDailyReport() {
         };
     
     const token  = localStorage.getItem('token');
-    const { data } = await axios.post("http://34.235.120.189:3000/report/dailyreport", date, { headers: {"Authorization" : token} });
+    const { data } = await axios.post("http://localhost:3000/report/dailyreport", date, { headers: {"Authorization" : token} });
     dailyexpenseList.innerHTML=""
     for (let i = 0; i < data.data.length; i++) {
     const html = createExpenseElement(data.data[i]);
@@ -41,7 +41,7 @@ async function showMonthlyReport() {
         };
     
     const token  = localStorage.getItem('token');
-    const { data } = await axios.post("http://34.235.120.189:3000/report/monthreport", monthly, { headers: {"Authorization" : token} });
+    const { data } = await axios.post("http://localhost:3000/report/monthreport", monthly, { headers: {"Authorization" : token} });
     monthexpenseList.innerHTML=""
     for (let i = 0; i < data.data.length; i++) {
     const html = createExpenseElement(data.data[i]);
@@ -64,7 +64,7 @@ catch (err) {
 async function handleDownload() {
     const token = localStorage.getItem('token');
     try {
-        const response = await axios.get('http://34.235.120.189:3000/report/download', {
+        const response = await axios.get('http://localhost:3000/report/download', {
           headers: { "Authorization": token }
         });
       
@@ -85,7 +85,7 @@ async function handleDownload() {
 async function showPrevReport(){
     const token = localStorage.getItem('token');
     try {
-     const {data} = await axios.get('http://34.235.120.189:3000/report/prevReport',{
+     const {data} = await axios.get('http://localhost:3000/report/prevReport',{
         headers: { "Authorization": token }
      })
     prevDownload.innerHTML=""

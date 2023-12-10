@@ -19,7 +19,7 @@ function onSubmit(e) {
             Category: category.value,
         };
         const token=localStorage.getItem("token")
-        axios.post("http://34.235.120.189:3000/add-expense/expense", details, { headers: {"Authorization" : token} }).
+        axios.post("http://localhost:3000/add-expense/expense", details, { headers: {"Authorization" : token} }).
             then(({ data }) => {
                 amount.value='';
                 description.value='';

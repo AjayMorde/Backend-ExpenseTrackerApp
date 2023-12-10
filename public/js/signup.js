@@ -40,11 +40,11 @@ async function addUser(userData) {
 
     try {
 
-        let response = await axios.post("http://34.235.120.189:3000/add-user/signup", userData);
+        let response = await axios.post("http://localhost:3000/add-user/signup", userData);
         if (response.status === 200) {
             alert("User Successfully Created!");
          
-            window.location.href="../Login/login.html";
+            window.location.href="/views/login.html";
 
         }
         

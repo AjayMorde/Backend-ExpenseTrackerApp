@@ -15,6 +15,7 @@ const Download=require('./models/download');
 
 
 
+const mainPageRouter = require('./routes/mainpage');
 const addUser = require('./routes/add-user');
 const userName=require('./routes/getUsername');
 const userLogin = require('./routes/user-login');
@@ -30,15 +31,13 @@ const report= require('./routes/reports');
 
 
 
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname+ 'views')));  
-app.use(cors());
-app.use(bodyparser.json({ extended: false }));
+app.use(express.static('public'));
 
-app.use(express.static('FrontEnd'))
 
+app.use(mainPageRouter)
 app.use('/add-user', addUser);
 app.use('/user-login', userLogin);
 app.use('/getUser', userName); 
@@ -50,9 +49,6 @@ app.use('/premiumuser', premiumFeatures);
 app.use('/password', forgotPassword);
 app.use('/report',report);
 
-app.use('/',(req,res,next)=>{
-    res.sendFile('sign-up.html',{root:'FrontEnd/sign-up'}) 
-})
 
 
 
