@@ -32,7 +32,7 @@ const report= require('./routes/reports');
 
 
 app.use(express.static(path.join(__dirname+ 'views')));  
-app.use(bodyParser.json({extended:false}));
+app.use(bodyparser.json({extended:false}));
 app.use(cors());
 
 
